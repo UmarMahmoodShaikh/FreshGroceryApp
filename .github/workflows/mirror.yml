@@ -8,21 +8,14 @@ jobs:
   mirror:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Mirror to Epitech Repo
-        uses: pixta-dev/repository-mirroring-action@v1
-        with:
-          target_repo_url: https://github.com/EpitechMscInternationalPromo2027/I-DEV-702-INT-7-1-trinitydevweb-4.git
-          ssh_private_key: ${{ secrets.EPITECH_MIRROR_KEY }} # Fallback if SSH used
         env:
-          # If using HTTPS/PAT, the action might support passing it or we use git commands manually
-          # Standard action uses SSH key. For PAT we use a manual script.
           EPITECH_PAT: ${{ secrets.EPITECH_PAT }}
-          
-      - name: Manual Mirror using PAT (Fallback)
-        if: ${{ env.EPITECH_PAT != '' }}
         run: |
-          git remote add epitech https://x-access-token:${{ secrets.EPITECH_PAT }}@github.com/EpitechMscInternationalPromo2027/I-DEV-702-INT-7-1-trinitydevweb-4.git
+          git remote add epitech https://x-access-token:$EPITECH_PAT@github.com/EpitechMscInternationalPromo2027/I-DEV-702-INT-7-1-trinitydevweb-4.git
           git push epitech main --force
