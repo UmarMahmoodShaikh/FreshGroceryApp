@@ -53,6 +53,5 @@ test:
 #
 production:
   <<: *default
-  database: store_backend_production
-  username: store_backend
-  password: <%= ENV["STORE_BACKEND_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
+  prepared_statements: false
