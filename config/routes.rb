@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   # Health check
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Root
-  root "rails/welcome#index"
+  # Serve the React Frontend
+  root "frontend#index"
+  get '*path', to: 'frontend#index', constraints: ->(req) { !req.xhr? && req.format.html? }
 end
