@@ -46,8 +46,8 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_17_121117) do
     t.string "invoiceNumber", limit: 255, null: false
     t.decimal "totalAmount", precision: 10, scale: 2, default: "0.0", null: false
     t.json "items", default: [], null: false
-    t.enum "status", default: "pending", enum_type: ""enum_Invoices_status""
-    t.enum "paymentStatus", default: "pending", enum_type: ""enum_Invoices_paymentStatus""
+    t.enum "status", default: "pending", enum_type: "enum_Invoices_status"
+    t.enum "paymentStatus", default: "pending", enum_type: "enum_Invoices_paymentStatus"
     t.string "paymentProvider", limit: 255
     t.string "paymentReference", limit: 255
     t.string "paymentMethod", limit: 255
@@ -69,12 +69,12 @@ ActiveRecord::Schema[7.2].define(version: 2026_01_17_121117) do
     t.decimal "subtotal", precision: 10, scale: 2, null: false
     t.decimal "deliveryFee", precision: 10, scale: 2, null: false
     t.decimal "total", precision: 10, scale: 2, null: false
-    t.enum "status", default: "pending", enum_type: ""enum_Orders_status""
-    t.enum "deliveryMethod", null: false, enum_type: ""enum_Orders_deliveryMethod""
+    t.enum "status", default: "pending", enum_type: "enum_Orders_status"
+    t.enum "deliveryMethod", null: false, enum_type: "enum_Orders_deliveryMethod"
     t.json "deliveryAddress", null: false
     t.text "deliveryInstructions"
-    t.enum "paymentMethod", null: false, enum_type: ""enum_Orders_paymentMethod""
-    t.enum "paymentStatus", default: "pending", enum_type: ""enum_Orders_paymentStatus""
+    t.enum "paymentMethod", null: false, enum_type: "enum_Orders_paymentMethod"
+    t.enum "paymentStatus", default: "pending", enum_type: "enum_Orders_paymentStatus"
     t.timestamptz "estimatedDelivery"
     t.timestamptz "actualDelivery"
     t.timestamptz "createdAt", null: false
