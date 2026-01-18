@@ -7,6 +7,12 @@ const USE_MOCK_DATA = import.meta.env.VITE_USE_MOCK === 'true';
 const ensureAbsoluteUrl = (url) => {
   if (!url) return url;
   if (url.startsWith('http') || url.startsWith('data:')) return url;
+
+  // If RAILS_URL is empty (relative path usage), just ensure it starts with /
+  if (!RAILS_URL) {
+    return url.startsWith('/') ? url : `/${url}`;
+  }
+
   // Ensure we don't double slash
   const normalizedPath = url.startsWith('/') ? url : `/${url}`;
   return `${RAILS_URL}${normalizedPath}`;
