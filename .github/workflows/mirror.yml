@@ -15,7 +15,6 @@ jobs:
 
       - name: Mirror to Epitech
         env:
-          # This token must be stored in Your Repo (FreshGroceryApp) -> Settings -> Secrets -> Actions
           EPITECH_PAT: ${{ secrets.EPITECH_PAT }}
           TARGET_REPO: "https://github.com/EpitechMscInternationalPromo2027/I-DEV-702-INT-7-1-trinitydevweb-4.git"
         run: |
